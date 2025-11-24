@@ -14,7 +14,7 @@
 
     {{-- Botón: apunta a jugadores.create --}}
     <p class="mb-4">
-        <a href="{{ route('estadis.create') }}"
+        <a href="{{ route('jugadores.create') }}"
             class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 transition">
             Nova jugadora
         </a>
