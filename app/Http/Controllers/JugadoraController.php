@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 
 class JugadoraController extends Controller
 {
-    // Dades inicials (Seed)
+    // Dades inicials
     public $jugadores = [
         ['nom' => 'Alexia Putellas', 'equip' => 'Barça Femení', 'posicio' => 'Migcampista'],
         ['nom' => 'Esther González', 'equip' => 'Atlètic de Madrid', 'posicio' => 'Davantera'],
@@ -21,19 +21,17 @@ class JugadoraController extends Controller
         return view('jugadores.index', compact('jugadores'));
     }
 
-
     public function create()
     {
         return view('jugadores.create');
     }
-
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             'nom' => 'required|min:3',
             'equip' => 'required|min:2',
-            'posicio' => ['required', Rule::in(['Portera', 'Defensa', 'Migcampista', 'Davantera', 'Pixixi'])],
+            'posicio' => ['required', Rule::in(['Portera', 'Defensa', 'Migcampista', 'Davantera'])],
         ]);
 
         $jugadores = Session::get('jugadores', $this->jugadores);
@@ -43,5 +41,16 @@ class JugadoraController extends Controller
         return redirect()
             ->route('jugadores.index')
             ->with('success', 'Jugadora afegida correctament!');
+    }
+    public function show($id)
+    {
+        $jugadores = Session::get('jugadores', $this->jugadores);
+
+        if (!isset($jugadores[$id])) {
+            abort(404);
+        }
+
+        $jugadora = $jugadores[$id];
+        return view('jugadores.show', compact('jugadora'));
     }
 }

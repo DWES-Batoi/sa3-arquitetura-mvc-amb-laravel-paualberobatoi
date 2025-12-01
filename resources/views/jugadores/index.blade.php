@@ -3,7 +3,7 @@
 @section('title', "Llistat de Jugadores")
 
 @section('content')
-    {{-- Título --}}
+    {{-- Títol --}}
     <h1 class="text-3xl font-bold text-blue-800 mb-6">Llistat de Jugadores</h1>
 
     @if(session('success'))
@@ -12,7 +12,7 @@
         </div>
     @endif
 
-    {{-- Botón: apunta a jugadores.create --}}
+    {{-- Botó: apunta a jugadores.create --}}
     <p class="mb-4">
         <a href="{{ route('jugadores.create') }}"
             class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 transition">
@@ -20,7 +20,7 @@
         </a>
     </p>
 
-    {{-- Tabla: Nom, Equip, Posició --}}
+    {{-- Taula: Nom, Equip, Posició --}}
     <table class="w-full border-collapse border border-gray-300">
         <thead class="bg-gray-100">
             <tr>
@@ -30,9 +30,8 @@
             </tr>
         </thead>
         <tbody>
-            @forelse($jugadores as $jugadora)
-                {{-- Usamos el componente x-jugadora --}}
-                <x-jugadora :nom="$jugadora['nom']" :equip="$jugadora['equip']" :posicio="$jugadora['posicio']" />
+            @forelse($jugadores as $key => $jugadora)
+                <x-jugadora :id="$key" :nom="$jugadora['nom']" :equip="$jugadora['equip']" :posicio="$jugadora['posicio']" />
             @empty
                 <tr>
                     <td colspan="3" class="border border-gray-300 p-4 text-center text-gray-500">

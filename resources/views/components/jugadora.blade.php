@@ -1,9 +1,11 @@
-@props(['nom', 'equip', 'posicio'])
+@props(['id', 'nom', 'equip', 'posicio'])
 
 <tr class="hover:bg-gray-50 border-b border-gray-200">
-    {{-- Celda Nom --}}
+    {{-- Celda Nom (ARA AMB ENLLAÇ) --}}
     <td class="border border-gray-300 p-2 font-bold text-gray-800">
-        {{ $nom }}
+        <a href="{{ route('jugadores.show', $id) }}" class="text-blue-700 hover:underline">
+            {{ $nom }}
+        </a>
     </td>
 
     {{-- Celda Equip --}}

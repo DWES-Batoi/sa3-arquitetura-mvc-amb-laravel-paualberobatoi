@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 
 class PartitController extends Controller
 {
-    // Dades inicials (Seed)
+    // Dades inicials
     public $partits = [
         [
             'local' => 'Barça Femení', 
@@ -23,10 +23,6 @@ class PartitController extends Controller
         ],
     ];
 
-    /**
-     * Llistat de partits.
-     * GET /partits
-     */
     public function index()
     {
         $partits = Session::get('partits', $this->partits);
@@ -40,19 +36,16 @@ class PartitController extends Controller
 
     public function store(Request $request)
     {
-        // Validació amb regles estrictes
         $validated = $request->validate([
             'local' => 'required|min:2',
-            'visitant' => 'required|min:2|different:local', // No pot ser igual al local
-            'data' => 'required|date', // Laravel accepta Y-m-d per defecte
-            'resultat' => ['nullable', 'regex:/^\d+-\d+$/'], // Format ex: 2-1
+            'visitant' => 'required|min:2|different:local',
+            'data' => 'required|date',
+            'resultat' => ['nullable', 'regex:/^\d+-\d+$/'], // Ex: 2-1
         ], [
-            // Missatges personalitzats
             'visitant.different' => "L'equip visitant no pot ser el mateix que el local.",
-            'resultat.regex' => "El format del resultat ha de ser gols-gols (ex: 2-1).",
+            'resultat.regex' => "El format ha de ser gols-gols (ex: 2-1).",
         ]);
 
-        // Guardar en sessió
         $partits = Session::get('partits', $this->partits);
         $partits[] = $validated;
         Session::put('partits', $partits);
@@ -60,5 +53,21 @@ class PartitController extends Controller
         return redirect()
             ->route('partits.index')
             ->with('success', 'Partit afegit correctament!');
+    }
+    public function show($id)
+    {
+        // Recuperem els partits de la sessió
+        $partits = Session::get('partits', $this->partits);
+
+        // Si l'índex no existeix, tornem error 404
+        if (!isset($partits[$id])) {
+            abort(404);
+        }
+
+        // Recuperem el partit concret
+        $partit = $partits[$id];
+
+        // Carreguem la vista de detall
+        return view('partits.show', compact('partit'));
     }
 }
