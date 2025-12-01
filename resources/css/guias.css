@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap');
 
-/* --- FASE 5: Estils "Premium" & Auto-adaptables --- */
+/* --- FASE 5: Estils "Premium" --- */
 
 /* =========================================
    0. NAVEGACIÓ (NAV) - ESTIL ESPECÍFIC
@@ -56,7 +55,6 @@ h1 {
     margin-bottom: 1.5rem;
     letter-spacing: -0.03em;
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
