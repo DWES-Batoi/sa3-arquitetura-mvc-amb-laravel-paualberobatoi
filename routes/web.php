@@ -7,7 +7,7 @@ use App\Http\Controllers\JugadoraController;
 use App\Http\Controllers\PartitController;
 
 // Ruta de benvinguda
-Route::get('/', fn() => "Benvingut a la Guia d'Equips de Futbol Femenídsfsd!");
+Route::get('/', fn() => "Benvingut a la Guia d'Equips de Futbol Femení!");
 
 // Rutes d'Equips
 Route::resource('equips', EquipController::class);
