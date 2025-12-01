@@ -1,76 +1,206 @@
-/* 1. Estil per a les TAULES (Més net i professional) */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap');
+
+/* --- FASE 5: Estils "Premium" & Auto-adaptables --- */
+
+/* =========================================
+   0. NAVEGACIÓ (NAV) - ESTIL ESPECÍFIC
+   ========================================= */
+/* Assegurem que el menú es vegi bé i blanc sobre fons blau */
+nav ul {
+    list-style: none !important; /* Força treure els punts */
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    gap: 1.5rem; /* Separació entre enllaços */
+    align-items: center;
+}
+
+nav a {
+    color: #ffffff !important; /* FORÇA LETRAS BLANCAS */
+    font-weight: 600;
+    text-decoration: none !important;
+    font-size: 0.95rem;
+    opacity: 0.9;
+    transition: all 0.2s ease-in-out;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent; /* Preparat per al hover */
+}
+
+nav a:hover {
+    color: #ffffff !important;
+    opacity: 1;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.8); /* Subratllat elegant al passar */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Petit brillantor */
+}
+
+/* =========================================
+   1. GLOBAL I TIPOGRAFIA
+   ========================================= */
+
+body {
+    background-color: #f8fafc;
+    color: #1e293b;
+    font-family: 'Figtree', system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Títols principals */
+h1 {
+    color: #1e3a8a; /* Blau fosc intens */
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Correcció per títols en capçaleres de color (blanc real) */
+.bg-blue-800 h1, .card-header h1 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 0;
+}
+
+/* Enllaços generals del contingut (no del menú) */
+main a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+main a:hover {
+    color: #1e40af;
+    text-decoration: underline;
+}
+
+/* =========================================
+   2. BOTONS D'ACCIÓ
+   ========================================= */
+button[type="submit"],
+.btn-action,
+a.bg-blue-600 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    color: white !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: linear-gradient(145deg, #2563eb, #1d4ed8);
+}
+
+button[type="submit"]:hover,
+a.bg-blue-600:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+/* =========================================
+   3. TAULES (Llistats)
+   ========================================= */
 table {
     width: 100%;
-    border-collapse: separate; /* Permet vores arrodonides */
+    border-collapse: separate; 
     border-spacing: 0;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    background-color: white;
+    border-radius: 0.75rem;
     overflow: hidden;
-    border-radius: 0.5rem; /* Vores arrodonides a la taula */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Ombra suau */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
 }
 
-/* Capçalera de la taula */
-thead th {
-    background-color: #1e40af; /* Blau fosc (blue-800) */
+thead {
+    background-color: #1e3a8a; /* Blau fosc */
     color: white;
-    padding: 12px 15px;
+}
+
+th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     letter-spacing: 0.05em;
+    border-bottom: 2px solid #172554;
 }
 
-/* Cel·les del cos */
-tbody td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #e5e7eb; /* Gris clar */
-    color: #374151; /* Gris fosc */
+td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    color: #475569;
+    vertical-align: middle;
 }
 
-/* Efecte zebra (files alternes) */
-tbody tr:nth-child(even) {
-    background-color: #f9fafb; /* Gris molt clar */
-}
-
-/* Efecte hover (quan passes el ratolí) */
 tbody tr:hover {
-    background-color: #eff6ff; /* Blau molt clar */
-    transition: background-color 0.2s;
+    background-color: #f8fafc;
 }
 
-/* 2. Estil per als FORMULARIS (Inputs més macos) */
-input[type="text"],
-input[type="number"],
-input[type="date"],
-select {
+/* =========================================
+   4. FORMULARIS
+   ========================================= */
+form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+}
+
+label {
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+input, select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #d1d5db;
-    border-radius: 0.375rem; /* Arrodonit */
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
     margin-top: 0.25rem;
-    transition: all 0.3s ease;
+    transition: all 0.2s;
 }
 
-/* Quan fas clic a l'input (Focus) */
 input:focus, select:focus {
     outline: none;
-    border-color: #3b82f6; /* Blau */
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); /* Resplendor blau */
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
-/* 3. Estil per a les ALERTES (Missatges d'èxit) */
-.alerta-exit {
-    background-color: #d1fae5; /* Verd fons */
-    border-left: 5px solid #059669; /* Verd vora esquerra */
-    color: #065f46; /* Verd text */
+/* =========================================
+   5. ALERTES
+   ========================================= */
+.bg-green-100 {
+    background-color: #f0fdf4 !important;
+    border-left: 5px solid #22c55e !important;
+    color: #15803d !important;
     padding: 1rem;
-    border-radius: 0.375rem;
+    border-radius: 0.5rem;
     margin-bottom: 1.5rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    animation: slideIn 0.5s ease-out; /* Animació d'entrada */
+    font-weight: 500;
+    animation: slideIn 0.5s ease-out;
 }
 
-/* Animació simple */
 @keyframes slideIn {
-    from { transform: translateY(-10px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

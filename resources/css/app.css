@@ -1,2 +1,3 @@
-/* EN CSS, @import SIEMPRE DEBE IR PRIMERO */
-@import './guias.css';
+@import "tailwindcss";
+
+@import "./guias.css";
